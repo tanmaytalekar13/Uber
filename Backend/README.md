@@ -89,3 +89,60 @@ The following fields are required in the request body:
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
 }
 ```
+
+# User Profile Endpoint
+
+## Endpoint: `/users/profile`
+
+### Description
+This endpoint is used to get the profile of the logged-in user.
+
+### Method
+`GET`
+
+### Authentication
+This endpoint requires a valid JWT token.
+
+### Status Codes
+- `200 OK`: Profile retrieved successfully.
+- `401 Unauthorized`: No token provided or token is invalid.
+- `500 Internal Server Error`: An error occurred on the server.
+
+### Example Response
+```json
+{
+    "user": {
+        "_id": "60d0fe4f5311236168a109ca",
+        "fullname": {
+            "firstname": "John",
+            "lastname": "Doe"
+        },
+        "email": "john.doe@example.com"
+    }
+}
+```
+
+# User Logout Endpoint
+
+## Endpoint: `/users/logout`
+
+### Description
+This endpoint is used to log out the logged-in user.
+
+### Method
+`GET`
+
+### Authentication
+This endpoint requires a valid JWT token.
+
+### Status Codes
+- `200 OK`: User successfully logged out.
+- `401 Unauthorized`: No token provided or token is invalid.
+- `500 Internal Server Error`: An error occurred on the server.
+
+### Example Response
+```json
+{
+    "message": "Logged out successfully"
+}
+```
