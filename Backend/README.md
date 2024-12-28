@@ -211,3 +211,115 @@ The following fields are required in the request body:
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
 }
 ```
+
+# Captain Login Endpoint
+
+## Endpoint: `/captains/login`
+
+### Description
+This endpoint is used to log in an existing captain.
+
+### Method
+`POST`
+
+### Status Codes
+- `200 OK`: Captain successfully logged in.
+- `400 Bad Request`: Validation errors or invalid credentials.
+- `500 Internal Server Error`: An error occurred on the server.
+
+### Required Data
+The following fields are required in the request body:
+- `email` (string, valid email format)
+- `password` (string, minimum 6 characters)
+
+### Example Request
+```json
+{
+    "email": "jane.doe@example.com",
+    "password": "password123"
+}
+```
+
+### Example Response
+```json
+{
+    "captain": {
+        "_id": "60d0fe4f5311236168a109cb",
+        "fullname": {
+            "firstname": "Jane",
+            "lastname": "Doe"
+        },
+        "email": "jane.doe@example.com",
+        "vehicle": {
+            "color": "red",
+            "plate": "ABC123",
+            "capacity": 4,
+            "vehicleType": "car"
+        }
+    },
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+}
+```
+
+# Captain Profile Endpoint
+
+## Endpoint: `/captains/profile`
+
+### Description
+This endpoint is used to get the profile of the logged-in captain.
+
+### Method
+`GET`
+
+### Authentication
+This endpoint requires a valid JWT token.
+
+### Status Codes
+- `200 OK`: Profile retrieved successfully.
+- `401 Unauthorized`: No token provided or token is invalid.
+- `500 Internal Server Error`: An error occurred on the server.
+
+### Example Response
+```json
+{
+    "captain": {
+        "_id": "60d0fe4f5311236168a109cb",
+        "fullname": {
+            "firstname": "Jane",
+            "lastname": "Doe"
+        },
+        "email": "jane.doe@example.com",
+        "vehicle": {
+            "color": "red",
+            "plate": "ABC123",
+            "capacity": 4,
+            "vehicleType": "car"
+        }
+    }
+}
+```
+
+# Captain Logout Endpoint
+
+## Endpoint: `/captains/logout`
+
+### Description
+This endpoint is used to log out the logged-in captain.
+
+### Method
+`GET`
+
+### Authentication
+This endpoint requires a valid JWT token.
+
+### Status Codes
+- `200 OK`: Captain successfully logged out.
+- `401 Unauthorized`: No token provided or token is invalid.
+- `500 Internal Server Error`: An error occurred on the server.
+
+### Example Response
+```json
+{
+    "message": "Logged out successfully"
+}
+```

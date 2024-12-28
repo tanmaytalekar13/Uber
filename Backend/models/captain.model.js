@@ -70,7 +70,7 @@ captainSchema.methods.generateAuthToken=function(){
     const token=jwt.sign({_id:this._id},process.env.JWT_SECRET,{expiresIn:'24h'});
     return token;
 }
-captainSchema.methods.comparepassword=function(){
+captainSchema.methods.comparePassword=function(enteredPassword){
     return bcrypt.compare(enteredPassword,this.password);
 }
 captainSchema.statics.hashPassword=function(password){
